@@ -14,7 +14,7 @@ import {
 
 const solutions = [
   {
-    name: "blogs",
+    name: "Blogs",
     description: "All out posts",
     href: "#",
     icon: ChartPieIcon,
@@ -52,7 +52,7 @@ const callsToAction = [
 export default function KeyInfo() {
   return (
     <Popover className="relative">
-      <PopoverButton className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
+      <PopoverButton className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 focus:outline-none">
         <span>Key Info</span>
         <ChevronDownIcon aria-hidden="true" className="h-5 w-5" />
       </PopoverButton>
