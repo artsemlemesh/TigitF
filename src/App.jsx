@@ -1,9 +1,11 @@
+import HomePage from './pages/Home'
+import './tailwind.css'
 
 function App() {
 
   return (
     <>
-      <h1>hello from react</h1>
+      <HomePage/>
     </>
   )
 }
