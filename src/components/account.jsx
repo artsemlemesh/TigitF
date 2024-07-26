@@ -19,19 +19,13 @@ const options = [
 ];
 
 const Account = () => {
-
-    
-
   return (
     <>
-      <Popover className="relative"
-       
-      >
-        <PopoverButton className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 focus:outline-none">
-        <div className="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 mx-6">
-
+      <Popover className="relative">
+        <PopoverButton className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-pink-500 focus:outline-none">
+          <div className="inline-flex items-center rounded-md bg-gray-50 px-1 py-4 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 mx-1">
             account
-          <ChevronDownIcon aria-hidden="true" className="h-5 w-5" />
+            <ChevronDownIcon aria-hidden="true" className="h-5 w-5" />
           </div>
         </PopoverButton>
 
