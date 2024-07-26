@@ -6,11 +6,10 @@
 // const Header = () => {
 
 //     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-    
+
 //     const toggleMobileMenu = () => {
 //         setIsMobileMenuOpen(!isMobileMenuOpen)
 //     }
-
 
 //   return (
 //     <div className="px-4 mx-auto flex flex-col sm:flex-row items-center justify-between bg-blue-500 rounded-md">
@@ -49,29 +48,34 @@
 //         </div>
 //       )}
 
-      
 //     </div>
 //   );
 // };
 
 // export default Header;
 
-
-
-
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import KeyInfo from './keyinfo'
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+} from "@headlessui/react";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import KeyInfo from "./keyinfo";
+import MotorbikeRoutes from "./motorbikeroutes";
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-]
+  { name: "Dashboard", href: "#", current: true },
+  { name: "Team", href: "#", current: false },
+  { name: "Projects", href: "#", current: false },
+  { name: "Calendar", href: "#", current: false },
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Header() {
@@ -107,15 +111,23 @@ export default function Header() {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
+                          item.current
+                            ? "bg-gray-900 text-white"
+                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          "rounded-md px-3 py-2 text-sm font-medium"
                         )}
-                        aria-current={item.current ? 'page' : undefined}
+                        aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
                       </a>
                     ))}
-                    <KeyInfo />
+                    <div className="flex items-center text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 ">
+                      <KeyInfo />
+                      
+                    </div>
+                    <div className="flex items-center text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3">
+                      <MotorbikeRoutes />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -142,17 +154,26 @@ export default function Header() {
                   </div>
                   <MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <MenuItem>
-                      <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
                         Your Profile
                       </a>
                     </MenuItem>
                     <MenuItem>
-                      <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
                         Settings
                       </a>
                     </MenuItem>
                     <MenuItem>
-                      <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
                         Sign out
                       </a>
                     </MenuItem>
@@ -170,19 +191,26 @@ export default function Header() {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block rounded-md px-3 py-2 text-base font-medium'
+                    item.current
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "block rounded-md px-3 py-2 text-base font-medium"
                   )}
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
                 </DisclosureButton>
               ))}
-              <KeyInfo /> {/* Include KeyInfo in the mobile dropdown */}
+              <div className=" px-3 py-2 text-base text-gray-300 font-medium rounded-md hover:bg-gray-700 hover:text-white">
+                <KeyInfo />
+              </div>
+              <div className=" px-3 py-2 text-base text-gray-300 font-medium rounded-md hover:bg-gray-700 hover:text-white">
+                <MotorbikeRoutes />
+              </div>
             </div>
           </DisclosurePanel>
         </>
       )}
     </Disclosure>
-  )
+  );
 }

@@ -52,7 +52,7 @@ const callsToAction = [
 export default function KeyInfo() {
   return (
     <Popover className="relative">
-      <PopoverButton className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-white focus:outline-none">
+      <PopoverButton className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6  focus:outline-none">
         <span>Key Info</span>
         <ChevronDownIcon aria-hidden="true" className="h-5 w-5" />
       </PopoverButton>
