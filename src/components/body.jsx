@@ -1,4 +1,39 @@
-import SelectMenu, { SimpleDatePicker, TimePicker } from "./selectMenu";
+import { InfiniteMovingCards } from "./infiniteTestimonials";
+import RentForm from "./rentForm";
+import ToursAccessories from "./tours_accessories";
+
+const items = [
+  {
+    quote: "This service is amazing! I loved every bit of it.",
+    name: "Alice Johnson",
+    title: "CEO, TechCorp",
+  },
+  {
+    quote: "Outstanding experience. Highly recommended.",
+    name: "Bob Smith",
+    title: "CTO, Innovatech",
+  },
+  {
+    quote: "The team was professional and delivered great results.",
+    name: "Carol White",
+    title: "Manager, FinBank",
+  },
+  {
+    quote: "A wonderful experience from start to finish.",
+    name: "David Brown",
+    title: "Director, HealthPlus",
+  },
+  {
+    quote: "Exceptional quality and customer service.",
+    name: "Emily Davis",
+    title: "Owner, ShopEasy",
+  },
+  {
+    quote: "I couldn't be happier with the service provided.",
+    name: "Frank Wilson",
+    title: "Founder, GreenTech",
+  },
+];
 
 const BodyComponent = () => {
   return (
@@ -38,33 +73,27 @@ const BodyComponent = () => {
         </header>
 
         <div className="p-4">
-
-          <div className="mb-4 text-lg font-semibold">Start Departure</div>
-          <div className="flex flex-col  sm:flex-row sm:justify-between items-center sm:space-x-4 space-y-4 sm:space-y-0 w-full max-w-3xl mx-auto">            
-            <div className="flex-1 flex flex-col items-center justify-center py-10">
-              <SelectMenu some_text="Start City" />
-            </div>
-            <div className="flex-1 flex flex-col items-center justify-center">
-              <SimpleDatePicker select_a_date="Start Date" />
-            </div>
-            <div className="flex-1 flex flex-col items-center justify-center">
-              <TimePicker select_a_time="Start Time" />
-            </div>
-          </div>
-
-          <div className="mb-4 text-lg font-semibold">Return Arrival</div>
-          <div className="flex flex-col  sm:flex-row sm:justify-between items-center sm:space-x-4 space-y-4 sm:space-y-0 w-full max-w-3xl mx-auto">            
-            <div className="flex-1 flex flex-col items-center justify-center py-10">
-              <SelectMenu some_text="Return City" />
-            </div>
-            <div className="flex-1 flex flex-col items-center justify-center">
-              <SimpleDatePicker select_a_date="Return Date" />
-            </div>
-            <div className="flex-1 flex flex-col items-center justify-center">
-              <TimePicker select_a_time="Return Time" />
-            </div>
-          </div>
+          <RentForm />
         </div>
+      </div>
+
+      <ToursAccessories />
+
+      <div className="">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold  my-6">Testimonials</h2>
+          <h4 className="font-medium text-gray-700">
+            What People Say about Us
+          </h4>
+        </div>
+
+        <InfiniteMovingCards
+          items={items}
+          direction="left"
+          speed="slow"
+          pauseOnHover={true}
+          className="custom-class mx-auto"
+        />
       </div>
     </>
   );
