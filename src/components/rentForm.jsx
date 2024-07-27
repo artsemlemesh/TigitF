@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import { useDispatch } from "react-redux";
+import 'react-datepicker/dist/react-datepicker.css';
 
 const RentForm = () => {
   const [formData, setFormData] = useState({
@@ -21,28 +22,26 @@ const RentForm = () => {
 
   // const dispatch = useDispatch()
 
-//   set up later after incorporated Redux
+  //   set up later after incorporated Redux
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     // dispatch()
     setFormData({
-        start_city: "",
-    start_date: null,
-    start_time: "",
-    return_city: "",
-    return_date: null,
-    return_time: "",
-
-    })
-  }
-
+      start_city: "",
+      start_date: null,
+      start_time: "",
+      return_city: "",
+      return_date: null,
+      return_time: "",
+    });
+  };
 
   return (
-    <div className="w-3/5 mx-auto bg-white p-8">
+    <div className="w-full mx-auto bg-white p-8">
       <h2 className="text-2xl mb-2 ">Start Departure</h2>
-      <form className="flex flex-wrap">
+      <form className="flex flex-wrap ">
         {/* start city */}
-        <div className="w-full md:w-1/3 p-2">
+        <div className="w-full md:w-1/3 p-2 flex flex-col items-center justify-center">
           <label
             className="block text-lg font-medium text-gray-700 mb-2"
             htmlFor="start_city"
@@ -67,7 +66,7 @@ const RentForm = () => {
           </select>
         </div>
         {/* start date */}
-        <div className="w-full md:w-1/3 p-2">
+        <div className="w-full md:w-1/3 p-2 flex flex-col items-center justify-center">
           <label
             htmlFor="date-picker"
             className="block text-lg font-medium text-gray-700 mb-2"
@@ -82,11 +81,11 @@ const RentForm = () => {
             className="border border-gray-300 rounded-md py-1 px-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             placeholderText="Click to select a date"
             minDate={new Date()}
-          ></DatePicker>
+          />
         </div>
 
         {/* start time */}
-        <div className="w-full md:w-1/3 p-2">
+        <div className="w-full md:w-1/3 p-2 flex flex-col items-center justify-center">
           <label
             htmlFor="time-picker"
             className="block text-lg font-medium text-gray-700 mb-2"
@@ -106,11 +105,11 @@ const RentForm = () => {
             maxTime={new Date().setHours(17, 0)}
             className="border border-gray-300 rounded-md py-1 px-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             placeholderText="Click to select a date"
-          ></DatePicker>
+          />
         </div>
 
         {/* return city */}
-        <div className="w-full md:w-1/3 p-2">
+        <div className="w-full md:w-1/3 p-2 flex flex-col items-center justify-center">
           <label
             className="block text-lg font-medium text-gray-700 mb-2"
             htmlFor="return_city"
@@ -136,7 +135,7 @@ const RentForm = () => {
         </div>
 
         {/* return date */}
-        <div className="w-full md:w-1/3 p-2">
+        <div className="w-full md:w-1/3 p-2 flex flex-col items-center justify-center">
           <label
             htmlFor="date-picker-return"
             className="block text-lg font-medium text-gray-700 mb-2"
@@ -151,11 +150,11 @@ const RentForm = () => {
             className="border border-gray-300 rounded-md py-1 px-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             placeholderText="Click to select a date"
             minDate={new Date()}
-          ></DatePicker>
+          />
         </div>
 
         {/* return time */}
-        <div className="w-full md:w-1/3 p-2">
+        <div className="w-full md:w-1/3 p-2 flex flex-col items-center justify-center">
           <label
             htmlFor="time-picker-return"
             className="block text-lg font-medium text-gray-700 mb-2"
@@ -175,7 +174,7 @@ const RentForm = () => {
             maxTime={new Date().setHours(17, 0)}
             className="border border-gray-300 rounded-md py-1 px-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             placeholderText="Click to select a date"
-          ></DatePicker>
+          />
         </div>
 
         <div className="w-full md:w-1/3 p-2 flex items-end">

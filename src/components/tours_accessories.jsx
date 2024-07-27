@@ -1,3 +1,6 @@
+import { FaBox, FaMotorcycle, FaCreditCard } from 'react-icons/fa';
+
+
 const ToursAccessories = () => {
   return (
     <>
@@ -28,6 +31,37 @@ const ToursAccessories = () => {
           <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
             Check out our motorbikes
           </button>
+        </div>
+      </div>
+
+      {/* pick drive drop */}
+      <div className="flex flex-col md:flex-row items-center justify-between p-6 bg-white rounded-lg shadow-lg">
+        {/* Left Section: pickup */}
+        <div className="md:w-1/3 w-full p-4 flex flex-col items-center justify-center">
+          <FaBox size={40}/>
+          
+          <h2 className=" text-xl md:text-2xl mt-4 font-bold mb-4 text-gray-600">PICKUP</h2>
+          <p className="text-gray-400 mb-6 text-center sm:mx-12 md:mx-2">
+          Reserve in advance. Pickup the reserved model. Pre-auth Deposit, rental by card or cash
+          </p>
+        </div>
+
+        {/* middle Section: drive */}
+        <div className="md:w-1/3 w-full p-4 flex flex-col items-center justify-center">
+          <FaMotorcycle size={40}/>
+          
+          <h2 className=" text-xl md:text-2xl mt-4 font-bold mb-4 text-gray-600">Drive</h2>
+          <p className="text-gray-400 mb-6 text-center sm:mx-12 md:mx-2">
+          Great views, amazing locals and reliable motorbikes. Breakdown support, damage waivers and clear contracts/instructions          </p>
+        </div>
+
+        {/* Right Section: easy drop off */}
+        <div className="md:w-1/3 w-full p-4 flex flex-col items-center justify-center">
+          <FaCreditCard size={40}/>
+          
+          <h2 className=" text-xl md:text-2xl mt-4 font-bold mb-4 text-gray-600">Easy drop off</h2>
+          <p className="text-gray-400 mb-6 text-center sm:mx-12 md:mx-2">
+          Return the motorbike to a Tigit office and be on your way within five minutes. Easy and quick with the hope of no drama          </p>
         </div>
       </div>
 
