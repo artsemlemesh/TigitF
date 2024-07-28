@@ -6,11 +6,11 @@ import { Provider } from "react-redux";
 import store from "./app/store.js";
 import GlobalState from "./GlobalContext.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <GlobalState>
         <App />
       </GlobalState>
     </Provider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

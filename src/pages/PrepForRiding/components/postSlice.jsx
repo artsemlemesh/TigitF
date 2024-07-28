@@ -23,6 +23,21 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
       title: "Dummy Post 3",
       content: "This is the content for dummy post 3.",
     },
+    {
+      id: 4,
+      title: "Dummy Post 4",
+      content: "This is the content for dummy post 3.",
+    },
+    {
+      id: 5,
+      title: "Dummy Post 5",
+      content: "This is the content for dummy post 3.",
+    },
+    {
+      id: 6,
+      title: "Dummy Post 6",
+      content: "This is the content for dummy post 3.",
+    },
   ];
   return dummyData;
 });
