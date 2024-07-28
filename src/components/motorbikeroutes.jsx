@@ -11,6 +11,8 @@ import {
   FingerPrintIcon,
   SquaresPlusIcon,
 } from "@heroicons/react/24/outline";
+import { useContext, useState } from "react";
+import { GlobalContext } from "../GlobalContext";
 
 const solutions = [
   {
@@ -50,15 +52,37 @@ const callsToAction = [
 ];
 
 export default function MotorbikeRoutes() {
+  
+  // const {isDropdownVisible,
+  //   handleMouseEnter,
+  //   handleMouseLeave,} = useContext(GlobalContext)
+
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsDropdownVisible(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDropdownVisible(false);
+  };
+
+
   return (
-    <Popover className="relative">
-      <PopoverButton className="inline-flex items-center gap-x-1  font-semibold leading-6  focus:outline-none">
+    <div
+    onMouseEnter={handleMouseEnter}
+    onMouseLeave={handleMouseLeave}
+    className="relative">
+      <div className="inline-flex items-center gap-x-1  font-semibold leading-6  focus:outline-none">
         <span>Motorbike Routes</span>
         <ChevronDownIcon aria-hidden="true" className="h-5 w-5" />
-      </PopoverButton>
+      </div>
 
-      <PopoverPanel
-        transition
+
+
+      {isDropdownVisible && (
+           <div
+        
         className="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
       >
         <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
@@ -100,7 +124,8 @@ export default function MotorbikeRoutes() {
             ))}
           </div>
         </div>
-      </PopoverPanel>
-    </Popover>
+      </div>
+)}
+    </div>
   );
 }

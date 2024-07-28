@@ -77,7 +77,7 @@ const BodyComponent = () => {
         </div>
       </div>
 
-      {/* <ToursAccessories /> */}
+      <ToursAccessories />
 
       <div className="">
         <div className="text-center">
