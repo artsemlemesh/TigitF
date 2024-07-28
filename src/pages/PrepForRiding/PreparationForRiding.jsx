@@ -2,6 +2,7 @@ import { useSelector } from "react-redux"
 import PostList from "./components/postList"
 import Sidebar from "./components/sideBar"
 import { useState } from "react"
+import Carousel from "./components/carousel"
 
 
 
@@ -21,6 +22,10 @@ const Blog = () => {
                 setActivePost={setActivePost}
               />
             </div>
+            <div>
+            <Carousel posts={posts}/>
+            </div>
+           
             <div className="md:w-1/3">
               <Sidebar activePost={activePost} posts={posts} />
             </div>
