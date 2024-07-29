@@ -2,7 +2,9 @@ import { useSelector } from "react-redux";
 import PostList from "./components/postList";
 import Sidebar from "./components/sideBar";
 import { useState } from "react";
-import Carousel from "./components/carousel";
+import VideoCarousel from "./components/videoCarousel";
+import PostCarousel from "./components/postCarousel";
+import LeaveComment from "./components/leaveComment";
 
 const Blog = () => {
   const posts = useSelector((state) => state.posts.posts);
@@ -17,6 +19,17 @@ const Blog = () => {
             activePost={activePost}
             setActivePost={setActivePost}
           />
+
+          <div >
+            <VideoCarousel />
+          </div>
+          <div>
+            <PostCarousel posts={posts} />
+          </div>
+          <div>
+            <LeaveComment/>
+          </div>
+
         </div>
 
         <div className="md:w-1/3">
@@ -24,9 +37,7 @@ const Blog = () => {
         </div>
       </div>
 
-      <div>
-        <Carousel posts={posts} />
-      </div>
+      
     </div>
   );
 };

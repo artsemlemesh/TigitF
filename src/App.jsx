@@ -3,6 +3,7 @@ import HomePage from './pages/Home'
 import './tailwind.css'
 import MyRoute from './MyRoute'
 import Header from './components/header'
+import Footer from './components/footer'
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
     <BrowserRouter>
       <Header/>
       <MyRoute/>
+      <Footer/>
     </BrowserRouter>
       
     </>
