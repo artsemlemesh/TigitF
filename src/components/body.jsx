@@ -39,7 +39,7 @@ const BodyComponent = () => {
   return (
     <>
       {/* rent bike menu */}
-      <div className="border border-gray-300 rounded-lg m-8 max-w-full sm:max-w-2xl  lg:max-w-6xl mx-auto">
+      <div className="border border-gray-300 rounded-lg m-8 max-w-full sm:max-w-2xl lg:max-w-6xl mx-auto">
         <header className="bg-blue-600 text-white rounded-t-lg py-4">
           <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ul className="flex justify-between items-center space-x-4">
