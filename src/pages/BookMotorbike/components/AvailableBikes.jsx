@@ -1,4 +1,5 @@
 import PhotoCarousel from "./photoCarousel1";
+import QTY from "./QTY";
 import TabsBike from "./tabsBike";
 
 const AvailableBikes = () => {
@@ -12,13 +13,11 @@ const AvailableBikes = () => {
             <div className="w-full min-w-[430px] sm:w-1/2 lg:w-1/3 p-2 flex flex-col justify-center">
               <PhotoCarousel />
             </div>
-            <div className="w-full min-w-[430px] sm:w-1/2 lg:w-1/3 p-2  items-center justify-start h-full">
+            <div className="w-full min-w-[430px] sm:w-1/2 lg:w-2/5 p-2  items-center justify-start h-full">
               <TabsBike/>
             </div>
-            <div className="w-full  lg:w-1/3 p-2 flex flex-col items-center justify-center">
-              <div className="border border-gray-300 p-4 rounded-lg">
-                Lort voluptates, adipisci assumenda.
-              </div>
+            <div className="w-full  lg:w-full xl:w-1/5 p-2 flex flex-col items-center justify-center h-full">
+              <QTY/>
             </div>
           </div>
         </div>

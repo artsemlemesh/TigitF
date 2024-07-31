@@ -3,17 +3,17 @@ import { useState } from "react";
 const tabs = [
   {
     id: 0,
-    label: "Tab 1",
+    label: "Overview",
     content:`The Honda Blade is one of the most common and simple motorbikes in Vietnam. Nothing bad can go wrong on these indestructible machines! Although Tigit offers more exciting motorbikes, the Blade is all that a traveller needs in Vietnam. The incredible Honda Blade can tackle any road that Vietnam can throw at it!`  },
-  { id: 1, label: "Tab 2", content: { transmission: "semi-automatic", gears: "4 Gears", engine: '110cc', seat: '769mm', weight: '98kg', power: '9 HP', tank: '3.7 Litres' } },
-  { id: 2, label: "Tab 3", content: "Content for Tab 3" },
+  { id: 1, label: "Specs", content: { transmission: "semi-automatic", gears: "4 Gears", engine: '110cc', seat: '769mm', weight: '98kg', power: '9 HP', tank: '3.7 Litres' } },
+  { id: 2, label: "Stock", content: "Content for Tab 3" },
 ];
 const TabsBike = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
     <div className="max-w-xl mx-auto p-4">
-      <div className="flex space-x-4 border-b-2 border-gray-200 mb-4">
+      <div className="flex justify-between space-x-4 border-b-2 border-gray-200 mb-4">
         {tabs.map((tab) => (
           <button
             key={tab.id}
