@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {  useState } from "react";
 
 const tabs = [
   {
@@ -8,6 +8,8 @@ const tabs = [
   { id: 1, label: "Specs", content: { transmission: "semi-automatic", gears: "4 Gears", engine: '110cc', seat: '769mm', weight: '98kg', power: '9 HP', tank: '3.7 Litres' } },
   { id: 2, label: "Stock", content: "Content for Tab 3" },
 ];
+
+
 const TabsBike = () => {
   const [activeTab, setActiveTab] = useState(0);
 

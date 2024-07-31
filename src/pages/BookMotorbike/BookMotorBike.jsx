@@ -1,18 +1,17 @@
-import AvailableBikes from "./components/AvailableBikes"
-import RecommendedBikes from "./components/RecommendedBikes"
+import AvailableBikes from "./components/AvailableBikes";
+import RecommendedBikes from "./components/RecommendedBikes";
+
 
 
 
 const BookMotorbike = () => {
+  return (
+    <>
+      {/* <RecommendedBikes/> */}
 
-    return (
-        <>
-        {/* <RecommendedBikes/> */}
-        <AvailableBikes/>
-        </>
+      <AvailableBikes />
+    </>
+  );
+};
 
-    )
-}
-
-
-export default  BookMotorbike
+export default BookMotorbike;
