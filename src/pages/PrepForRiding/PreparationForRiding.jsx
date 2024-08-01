@@ -21,7 +21,7 @@ const Blog = () => {
           />
 
           <div >
-            <VideoCarousel />
+            {/* <VideoCarousel /> */}
           </div>
           <div>
             <PostCarousel posts={posts} />

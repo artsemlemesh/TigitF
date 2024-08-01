@@ -30,7 +30,7 @@ const ToursComponent = () => {
 
   return (
     <>
-      <div className=" max-w-[1000px]  mx-auto flex flex-wrap justify-between space-x-4 border-b-2 border-gray-200 mb-4">
+      <div className=" max-w-[1000px]   mx-auto flex flex-wrap justify-between space-x-4 border-b-2 border-gray-200 mb-4">
         {tabs.map((tab) => (
           <button
             key={tab.id}

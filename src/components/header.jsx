@@ -13,10 +13,10 @@ import KeyInfo from "./keyinfo";
 import MotorbikeRoutes from "./motorbikeroutes";
 
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
+  { name: "Blog", href: "/blog", current: true },
+  { name: "FAQ", href: "/faqs", current: false },
+  { name: "BookMotorbike", href: "/bookMotorbike", current: false },
+  { name: "MotorbikeTours", href: "/motorbikeTours", current: false },
 ];
 
 function classNames(...classes) {
@@ -42,13 +42,13 @@ export default function Header() {
                 </DisclosureButton>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
+                {/* <div className="flex flex-shrink-0 items-center">
                   <img
                     alt="Your Company"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     className="h-8 w-auto"
                   />
-                </div>
+                </div> */}
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
