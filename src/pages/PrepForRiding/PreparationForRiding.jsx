@@ -5,6 +5,7 @@ import { useState } from "react";
 import VideoCarousel from "./components/videoCarousel";
 import PostCarousel from "./components/postCarousel";
 import LeaveComment from "./components/leaveComment";
+import Comments from "./components/comments";
 
 const Blog = () => {
   const posts = useSelector((state) => state.posts.posts);
@@ -25,6 +26,10 @@ const Blog = () => {
           </div>
           <div>
             <PostCarousel posts={posts} />
+          </div>
+          <div>
+
+            <Comments/>
           </div>
           <div>
             <LeaveComment/>
