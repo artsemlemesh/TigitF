@@ -3,6 +3,9 @@ import QTY from "./QTY";
 import TabsBike from "./tabsBike";
 
 const AvailableBikes = () => {
+
+  
+
   return (
     <>
       <div className="p-4">
@@ -14,7 +17,7 @@ const AvailableBikes = () => {
               <PhotoCarousel />
             </div>
             <div className="w-full min-w-[430px] sm:w-1/2 lg:w-2/5 p-2  items-center justify-start h-full">
-              <TabsBike/>
+              <TabsBike />
             </div>
             <div className="w-full  lg:w-full xl:w-1/5 p-2 flex flex-col items-center justify-center h-full">
               <QTY/>

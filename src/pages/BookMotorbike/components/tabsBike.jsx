@@ -1,17 +1,74 @@
-import {  useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBikes } from "../../../features/availableBikesSlice";
 
 const tabs = [
-  {
-    id: 0,
-    label: "Overview",
-    content:`The Honda Blade is one of the most common and simple motorbikes in Vietnam. Nothing bad can go wrong on these indestructible machines! Although Tigit offers more exciting motorbikes, the Blade is all that a traveller needs in Vietnam. The incredible Honda Blade can tackle any road that Vietnam can throw at it!`  },
-  { id: 1, label: "Specs", content: { transmission: "semi-automatic", gears: "4 Gears", engine: '110cc', seat: '769mm', weight: '98kg', power: '9 HP', tank: '3.7 Litres' } },
-  { id: 2, label: "Stock", content: "Content for Tab 3" },
+  { id: 0, label: "Overview" },
+  { id: 1, label: "Specs" },
+  { id: 2, label: "Stock" },
 ];
 
-
 const TabsBike = () => {
+  const dispatch = useDispatch();
+  const bikes = useSelector((state) => state.bikes.bikes);
+  const bikeStatus = useSelector((state) => state.bikes.status);
+  const bikeError = useSelector((state) => state.bikes.error);
+
   const [activeTab, setActiveTab] = useState(0);
+
+  useEffect(() => {
+    if (bikeStatus === "idle") {
+      dispatch(fetchBikes());
+    }
+  }, [bikeStatus, dispatch]);
+
+  let content;
+
+  if (bikeStatus === "succeeded" && bikes.length > 0) {
+    const bike = bikes[0];
+    content = (
+      <div className="text-gray-700">
+        {activeTab === 0 && <p>{bike.content}</p>}
+        {activeTab === 1 && (
+          <>
+            <p className="flex justify-between">
+              <span className="font-bold">Transmission:</span>
+              <span>{bike.transmission}</span>
+            </p>
+            <p className="flex justify-between">
+              <span className="font-bold">Gears:</span>
+              <span>{bike.gears}</span>
+            </p>
+            <p className="flex justify-between">
+              <span className="font-bold">Engine Size:</span>
+              <span>{bike.engine}</span>
+            </p>
+            <p className="flex justify-between">
+              <span className="font-bold">Seat Height:</span>
+              <span>{bike.seat_height}</span>
+            </p>
+            <p className="flex justify-between">
+              <span className="font-bold">Weight:</span>
+              <span>{bike.weight}</span>
+            </p>
+            <p className="flex justify-between">
+              <span className="font-bold">Horse Power:</span>
+              <span>{bike.power}</span>
+            </p>
+            <p className="flex justify-between">
+              <span className="font-bold">Tank Size:</span>
+              <span>{bike.tank_size}</span>
+            </p>
+          </>
+        )}
+        {activeTab === 2 && <p>Stock details or availability information...</p>}
+      </div>
+    );
+  } else if (bikeStatus === "loading") {
+    content = <p>Loading...</p>;
+  } else if (bikeStatus === "failed") {
+    content = <p>Error: {bikeError}</p>;
+  }
 
   return (
     <div className="max-w-xl mx-auto p-4">
@@ -31,7 +88,7 @@ const TabsBike = () => {
         ))}
       </div>
       <div className="p-4">
-        {tabs.map(
+        {/* {tabs.map(
           (tab) =>
             activeTab === tab.id && (
               <div key={tab.id} className="text-gray-700">
@@ -53,7 +110,8 @@ const TabsBike = () => {
                 )}
               </div>
             )
-        )}
+        )} */}
+        {content}
       </div>
     </div>
   );
