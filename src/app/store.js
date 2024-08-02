@@ -4,6 +4,7 @@ import postReducer from "../features/postSlice"
 import tabReducer from "../features/FAQslice"
 import bikeReducer from "../features/availableBikesSlice"
 import commentReducer from "../features/commentSlice"
+import tourReducer from "../features/tourSlice"
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
     posts: postReducer,
     tabs: tabReducer,
     bikes: bikeReducer,
-    comments: commentReducer
+    comments: commentReducer,
+    tours: tourReducer
   },
 });
 

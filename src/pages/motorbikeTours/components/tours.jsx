@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Tour from "./tour";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTours } from "../../../features/tourSlice";
 
-const tours = [
-  {
-    header: "first",
-    hashtag1: "Hanoi",
-    hashtag2: "Tigit Guides",
-    hashtag3: "Rent a Tour Guide",
-  },
-  { header: "second", hashtag2: "Tigit Guides", hashtag3: "Rent a Tour Guide" },
-  { header: "third", hashtag1: "Tigit Guides", hashtag3: "Rent a Tour Guide" },
-];
+// const tours = [
+//   {
+//     header: "first",
+//     hashtag1: "Hanoi",
+//     hashtag2: "Tigit Guides",
+//     hashtag3: "Rent a Tour Guide",
+//   },
+//   { header: "second", hashtag2: "Tigit Guides", hashtag3: "Rent a Tour Guide" },
+//   { header: "third", hashtag1: "Tigit Guides", hashtag3: "Rent a Tour Guide" },
+// ];
 
 const tabs = [
   {
@@ -27,6 +29,44 @@ const tabs = [
 
 const ToursComponent = () => {
   const [activeTab, setActiveTab] = useState(0);
+
+  const dispatch = useDispatch()
+  const tours = useSelector((state) => state.tours.tours)
+  const status = useSelector((state) => state.tours.status)
+  const error = useSelector((state) => state.tours.error)
+
+  useEffect(() => {
+    if (status === 'idle'){
+        dispatch(fetchTours())
+    }
+}, [status, dispatch])
+
+  const filterTours = (tours, activeTab) => {
+    if (activeTab === 0) {
+      return tours
+    }
+
+    const filterKeywords = tabs[activeTab].label.toLowerCase().split(' ')
+    return tours.filter((tour) =>
+    tour.hashtags.some((hashtag) =>
+      filterKeywords.some((keyword) => hashtag.toLowerCase().includes(keyword))
+    ))
+  }
+
+
+  let content;
+  if(status === 'succeeded') {
+    const filteredTours = filterTours(tours, activeTab)
+    content = filteredTours.map((tour, index) => (
+      <Tour
+        key={index}
+        header={tour.header}
+        image={tour.image}
+        content={tour.content}
+        hashtags={tour.hashtags}
+      />
+    ))}
+  
 
   return (
     <>
@@ -47,15 +87,17 @@ const ToursComponent = () => {
       </div>
 
       <div className="max-w-full mx-auto p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {tours.map((tour, index) => (
+        {/* {tours.map((tour, index) => (
           <Tour
             key={index}
             header={tour.header}
-            hashtag1={tour.hashtag1}
-            hashtag2={tour.hashtag2}
-            hashtag3={tour.hashtag3}
+            // hashtag1={tour.hashtag1}
+            // hashtag2={tour.hashtag2}
+            // hashtag3={tour.hashtag3}
           />
-        ))}
+        ))} */}
+        {content}
+        
       </div>
     </>
   );
