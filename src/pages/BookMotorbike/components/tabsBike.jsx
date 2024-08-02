@@ -8,11 +8,11 @@ const tabs = [
   { id: 2, label: "Stock" },
 ];
 
-const TabsBike = () => {
+const TabsBike = ({ bike, bikeStatus, bikeError }) => {
   const dispatch = useDispatch();
-  const bikes = useSelector((state) => state.bikes.bikes);
-  const bikeStatus = useSelector((state) => state.bikes.status);
-  const bikeError = useSelector((state) => state.bikes.error);
+  // const bikes = useSelector((state) => state.bikes.bikes);
+  // const bikeStatus = useSelector((state) => state.bikes.status);
+  // const bikeError = useSelector((state) => state.bikes.error);
 
   const [activeTab, setActiveTab] = useState(0);
 
@@ -24,8 +24,7 @@ const TabsBike = () => {
 
   let content;
 
-  if (bikeStatus === "succeeded" && bikes.length > 0) {
-    const bike = bikes[0];
+  if (bikeStatus === "succeeded") {
     content = (
       <div className="text-gray-700">
         {activeTab === 0 && <p>{bike.content}</p>}
@@ -87,32 +86,7 @@ const TabsBike = () => {
           </button>
         ))}
       </div>
-      <div className="p-4">
-        {/* {tabs.map(
-          (tab) =>
-            activeTab === tab.id && (
-              <div key={tab.id} className="text-gray-700">
-                {tab.id === 1 ? (
-                    <>
-                        <p className="flex justify-between"><span className="font-bold">Transmission:</span><span>{tab.content.transmission}</span></p>
-                        <p className="flex justify-between"><span className="font-bold">Gears:</span><span>{tab.content.gears}</span></p>
-                        <p className="flex justify-between"><span className="font-bold">Engine Size:</span><span>{tab.content.engine}</span></p>
-                        <p className="flex justify-between"><span className="font-bold">Seat Height:</span><span>{tab.content.seat}</span></p>
-                        <p className="flex justify-between"><span className="font-bold">Weight:</span><span>{tab.content.weight}</span></p>
-                        <p className="flex justify-between"><span className="font-bold">Horse Power:</span><span>{tab.content.power}</span></p>
-                        <p className="flex justify-between"><span className="font-bold">Tank Size:</span><span>{tab.content.tank}</span></p>
-                    </>
-                ):
-                (
-                    <p>
-                        {tab.content}
-                    </p>
-                )}
-              </div>
-            )
-        )} */}
-        {content}
-      </div>
+      <div className="p-4">{content}</div>
     </div>
   );
 };
