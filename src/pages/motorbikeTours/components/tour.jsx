@@ -8,7 +8,7 @@ const Tour = ({header, image, content, hashtags}) => {
           <img
             src={image} 
             alt={header}
-            className="w-full h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80 object-cover"
+            className="w-full h-auto flex-shrink-0 object-contain rounded-lg shadow-lg"
           />
     
           {/* Header */}

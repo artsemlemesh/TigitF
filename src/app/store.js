@@ -5,6 +5,9 @@ import tabReducer from "../features/FAQslice"
 import bikeReducer from "../features/availableBikesSlice"
 import commentReducer from "../features/commentSlice"
 import tourReducer from "../features/tourSlice"
+import authReducer from "../features/authSlice"
+
+
 
 export const store = configureStore({
   reducer: {
@@ -13,7 +16,8 @@ export const store = configureStore({
     tabs: tabReducer,
     bikes: bikeReducer,
     comments: commentReducer,
-    tours: tourReducer
+    tours: tourReducer,
+    auth: authReducer
   },
 });
 

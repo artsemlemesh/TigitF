@@ -74,7 +74,7 @@ export default function MotorbikeRoutes() {
     onMouseLeave={handleMouseLeave}
     className="relative">
       <div className="inline-flex items-center gap-x-1  font-semibold leading-6  focus:outline-none">
-        <span>Motorbike Routes</span>
+        <span>Routes</span>
         <ChevronDownIcon aria-hidden="true" className="h-5 w-5" />
       </div>
 
