@@ -10,7 +10,7 @@ const initialState = {
 export const fetchComments = createAsyncThunk(
   "comments/fetchComments",
   async () => {
-    const response = await fetch("http://127.0.0.1:8000/comments/");
+    const response = await fetch("https://tigit-backend-9ddaf12b1666.herokuapp.com/comments/");
     const data = await response.json();
     return data;
   }
@@ -20,7 +20,7 @@ export const addNewComment = createAsyncThunk(
   "comments/addNewComment",
   async (formData) => {
     const response = await axios.post(
-      "http://127.0.0.1:8000/comments/",
+      "https://tigit-backend-9ddaf12b1666.herokuapp.com/comments/",
       formData,
       {
         headers: {
