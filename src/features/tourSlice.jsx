@@ -13,7 +13,6 @@ export const fetchTours = createAsyncThunk("tours/fetchTours", async () => {
       'https://tigit-backend-9ddaf12b1666.herokuapp.com/tours/',
     )
     const data = await response.json()
-    console.log('data', data)
     return data
     
   

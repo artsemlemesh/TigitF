@@ -2,10 +2,6 @@ import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import KeyInfo from "./keyinfo";
@@ -16,10 +12,10 @@ import LoginForm from "./LoginForm";
 import { useState } from "react";
 
 const navigation = [
-  { name: "Blog", href: "/blog", current: true },
-  { name: "FAQ", href: "/faqs", current: false },
-  { name: "Book", href: "/bookMotorbike", current: false },
-  { name: "Tours", href: "/motorbikeTours", current: false },
+  { name: "Blog", href: "/blog" },
+  { name: "FAQ", href: "/faqs" },
+  { name: "Book", href: "/bookMotorbike" },
+  { name: "Tours", href: "/motorbikeTours" },
 ];
 
 function classNames(...classes) {
@@ -28,6 +24,10 @@ function classNames(...classes) {
 
 export default function Header() {
   const [showLogin, setShowLogin] = useState(false);
+  const [activeTab, setActiveTab] = useState(null); // Updated to null initially
+  const handleTabClick = (name) => {
+    setActiveTab((prevActiveTab) => (prevActiveTab === name ? null : name));
+  };
 
   const dispatch = useDispatch();
   const authStatus = useSelector((state) => state.auth.status);
@@ -72,13 +72,14 @@ export default function Header() {
                       <a
                         key={item.name}
                         href={item.href}
+                        onClick={() => handleTabClick(item.name)}
                         className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
+                          activeTab === item.name
+                            ? "bg-blue-500 text-white"
                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
                           "rounded-md px-3 py-2 text-sm font-medium"
                         )}
-                        aria-current={item.current ? "page" : undefined}
+                        aria-current={activeTab === item.name ? "page" : undefined}
                       >
                         {item.name}
                       </a>
@@ -89,39 +90,37 @@ export default function Header() {
                     <div className="flex items-center text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3">
                       <MotorbikeRoutes />
                     </div>
-                    
-
                   </div>
                 </div>
                 <div className="hidden sm:block ml-auto">
-                    {user ? (
-                      <>
-                        <span className="text-gray-700 font-semibold text-center">
-                          Hello, {user.username}
-                        </span>
-                        <button
-                          onClick={handleLogout}
-                          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-4 text-center"
-                        >
-                          {authStatus === "loading"
-                            ? "Logging out ..."
-                            : "Logout"}
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        <button
-                          onClick={toggleLogin}
-                          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center"
-                        >
-                          {authStatus === "loading"
-                            ? "Logging in ..."
-                            : "Login"}
-                        </button>
-                        {showLogin && <LoginForm />}
-                      </>
-                    )}
-                    </div>
+                  {user ? (
+                    <>
+                      <span className="text-gray-700 font-semibold text-center">
+                        Hello, {user.username}
+                      </span>
+                      <button
+                        onClick={handleLogout}
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-4 text-center"
+                      >
+                        {authStatus === "loading"
+                          ? "Logging out ..."
+                          : "Logout"}
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        onClick={toggleLogin}
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-center"
+                      >
+                        {authStatus === "loading"
+                          ? "Logging in ..."
+                          : "Login"}
+                      </button>
+                      {showLogin && <LoginForm />}
+                    </>
+                  )}
+                </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
@@ -131,8 +130,6 @@ export default function Header() {
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
-
-               
               </div>
             </div>
           </div>
@@ -145,26 +142,27 @@ export default function Header() {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current
-                      ? "bg-gray-900 text-white"
+                    activeTab === item.name
+                      ? "bg-blue-500 text-white"
                       : "text-gray-300 hover:bg-gray-700 hover:text-white",
                     "block rounded-md px-3 py-2 text-base font-medium"
                   )}
-                  aria-current={item.current ? "page" : undefined}
+                  aria-current={activeTab === item.name ? "page" : undefined}
+                  onClick={() => handleTabClick(item.name)}
                 >
                   {item.name}
                 </DisclosureButton>
               ))}
-              <div className=" px-3 py-2 text-base text-gray-300 font-medium rounded-md hover:bg-gray-700 hover:text-white">
+              <div className="px-3 py-2 text-base text-gray-300 font-medium rounded-md hover:bg-gray-700 hover:text-white">
                 <KeyInfo />
               </div>
-              <div className=" px-3 py-2 text-base text-gray-300 font-medium rounded-md hover:bg-gray-700 hover:text-white">
+              <div className="px-3 py-2 text-base text-gray-300 font-medium rounded-md hover:bg-gray-700 hover:text-white">
                 <MotorbikeRoutes />
               </div>
               <div>
                 {user ? (
                   <div className="px-4 py-3 border-t border-gray-200 text-center">
-                    <span className="block text-gray-700 font-semibold">
+                    <span className="block text-blue-500 font-semibold">
                       Hello, {user.username}
                     </span>
                     <button
