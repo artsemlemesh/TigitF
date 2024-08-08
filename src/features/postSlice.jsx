@@ -45,4 +45,3 @@ const postsSlice = createSlice({
 export const { postAdded, postUpdated } = postsSlice.actions;
 
 export default postsSlice.reducer;
-f
