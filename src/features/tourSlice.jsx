@@ -10,7 +10,7 @@ const initialState = {
 export const fetchTours = createAsyncThunk("tours/fetchTours", async () => {
     
     const response = await fetch(
-      'https://tigit-backend-9ddaf12b1666.herokuapp.com/tours/',
+      `http://127.0.0.1:8000/tours/`
     )
     const data = await response.json()
     return data

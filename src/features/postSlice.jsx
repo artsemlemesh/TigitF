@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
-  const response = await fetch("https://tigit-backend-9ddaf12b1666.herokuapp.com/posts/");
+  const response = await fetch(`http://127.0.0.1:8000/posts/`);
   const data = await response.json();
   return data;
 });

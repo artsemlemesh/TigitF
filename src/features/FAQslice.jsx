@@ -10,7 +10,7 @@ const initialState = {
 export const fetchTabs = createAsyncThunk("tabs/fetchTabs", async () => {
     
     const response = await fetch(
-      'https://tigit-backend-9ddaf12b1666.herokuapp.com/tabs/',
+      `http://127.0.0.1:8000/tabs/`
     )
     const data = await response.json()
     return data

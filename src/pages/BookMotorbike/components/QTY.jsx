@@ -1,10 +1,19 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { rentBike, addRentedBike } from "../../../features/rentSlice";
 
-const QTY = () => {
+const QTY = ({bike}) => {
   const [quantity, setQuantity] = useState(1);
-
+  const dispatch = useDispatch()
+  const {status, error, rentedBikes} = useSelector((state) => state.rentBike)
   const increment = () => setQuantity(quantity + 1);
   const decrement = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
+
+  const handleRentBike = (bikeId) => {
+     dispatch(rentBike(bikeId))
+  }
+
+  
 
   return (
     <div className="max-w-lg w-full min-w-[250px] mx-auto p-4">
@@ -36,9 +45,11 @@ const QTY = () => {
         </div>
 
         <div className="w-full xl:w-full   sm:w-full p-2">
-          <button className="w-full py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition">
-            Book Now
+          <button onClick={handleRentBike} className="w-full py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition">
+            Add to rented list
           </button>
+          {status === 'failed' && <p>Error: {error}</p>}
+          <p>redted bikes: {rentedBikes.length}</p>
         </div>
       </div>
     </div>

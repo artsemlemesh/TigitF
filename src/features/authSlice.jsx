@@ -10,7 +10,7 @@ export const loginUser = createAsyncThunk(
   "auth/login",
   async ({ username, password }) => {
     const response = await fetch(
-      "https://tigit-backend-9ddaf12b1666.herokuapp.com/login/",
+      `http://127.0.0.1:8000/login/`,
       {
         method: "POST",
         credentials: "include",
@@ -33,7 +33,7 @@ export const loginUser = createAsyncThunk(
 
 export const logoutUser = createAsyncThunk("auth/logout", async () => {
   const response = await fetch(
-    "https://tigit-backend-9ddaf12b1666.herokuapp.com/logout/",
+    `http://127.0.0.1:8000/logout/`,
     {
       method: "POST",
       credentials: "include",
@@ -52,7 +52,7 @@ export const fetchUserProfile = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await get(
-        "https://tigit-backend-9ddaf12b1666.herokuapp.com/user-profile/",
+        `http://127.0.0.1:8000/user-profile/`,
         {
           withCredentials: true, // Include credentials for authentication
         }

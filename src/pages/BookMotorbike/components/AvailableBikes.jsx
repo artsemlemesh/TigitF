@@ -12,7 +12,7 @@ const AvailableBikes = ({ bike, bikeStatus, bikeError }) => {
         <TabsBike bike={bike} bikeStatus={bikeStatus} bikeError={bikeError} />
       </div>
       <div className="w-full  lg:w-full xl:w-1/5 p-2 flex flex-col items-center justify-center h-full">
-        <QTY />
+        <QTY bike={bike}/>
       </div>
     </>
   );
