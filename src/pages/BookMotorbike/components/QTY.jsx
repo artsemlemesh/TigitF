@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { rentBike, addRentedBike } from "../../../features/rentSlice";
+import { addBikeToCart, rentBike } from "../../../features/rentSlice";
+import Cart from "./cart";
+
 
 const QTY = ({bike}) => {
   const [quantity, setQuantity] = useState(1);
@@ -9,10 +11,10 @@ const QTY = ({bike}) => {
   const increment = () => setQuantity(quantity + 1);
   const decrement = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
 
-  const handleRentBike = (bikeId) => {
-     dispatch(rentBike(bikeId))
-  }
 
+  const handleAddToCart = () => {
+    dispatch(addBikeToCart({bikeId: bike.id, quantity}))
+  }
   
 
   return (
@@ -44,13 +46,16 @@ const QTY = ({bike}) => {
           </button>
         </div>
 
-        <div className="w-full xl:w-full   sm:w-full p-2">
-          <button onClick={handleRentBike} className="w-full py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition">
-            Add to rented list
+        <div className="w-full xl:w-full sm:w-full p-2">
+          <button
+            onClick={handleAddToCart}  // Call the handleAddToCart function on click
+            className="w-full py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition"
+            disabled={status === "loading"}  // Disable while loading
+          >
+            {status === "loading" ? "Renting..." : "Add to rented list"}
           </button>
-          {status === 'failed' && <p>Error: {error}</p>}
-          <p>redted bikes: {rentedBikes.length}</p>
         </div>
+        <Cart/>
       </div>
     </div>
   );
